@@ -1,0 +1,45 @@
+plugins {
+    id 'com.android.application'
+    id "kotlin-android"
+    id "dev.flutter.flutter-gradle-plugin"
+}
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+}
+
+android {
+    namespace 'com.example.android_intent_plus'
+    namespace 'com.example.app_usage'
+    compileSdkVersion 34  // Latest SDK version for better compatibility
+    kotlinOptions {
+        jvmTarget = '1.8'  // Change this to match your Java version
+    }
+    defaultConfig {
+        applicationId "com.example.flutter_project_final"
+        minSdkVersion 22  // Minimum SDK version supported
+        targetSdkVersion 34 // Targeting the latest SDK
+        versionCode 1
+        versionName "1.0"
+    }
+
+
+    buildTypes {
+        release {
+            // Enable code shrinking, obfuscation, and optimization for the release build.
+            minifyEnabled true
+            // Enables resource shrinking, which removes unused resources.
+
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            // Optional: You can also enable shrinking for the debug build if needed
+            minifyEnabled false
+
+        }
+    }
+
+
+    flutter {
+        source = "../.."
+    }
+}
